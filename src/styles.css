@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  position: relative;
+  background: url("https://ngrx.io/assets/images/header.svg");
+}
+
+.logo {
+  position: sticky;
+  width: 50px;
+  top: 20px;
+  left: 20px;
+}
+
+.contenedor {
+  border: 1px #fbfbfb solid;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.padre {
+  background: #4b314f48;
+}
+
+.hijo {
+  background: #ba2bd248;
+}
+
+.nieto {
+  background: #fdf2ec48;
+}
+
+code {
+  display: block;
+}
