@@ -1,1 +1,73 @@
-<p>padre-ngrx works!</p>
+<div class="row">
+  <div class="col-7 contenedor padre">
+    <div class="row">
+      <div class="col">
+        <h1>PadreNgRx</h1>
+        <code>
+          contador = <span class="contador">{{ contador }};</span>
+        </code>
+        <code>
+          this.store.select('contador').subscribe((state) => (this.contador =
+          state));
+        </code>
+
+        <div class="row mb-2">
+          <div class="col">
+            <button (click)="incrementar()" class="btn">+ Increment</button>
+            <button (click)="decrementar()" class="btn">- Decrement</button>
+          </div>
+
+          <code> this.store.dispatch(actions.increment... </code>
+
+          <code> this.store.dispatch(actions.decrement... </code>
+        </div>
+      </div>
+    </div>
+
+    <div class="row contenedor hijo">
+      <div class="col">
+        <app-hijo-ngrx></app-hijo-ngrx>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-5">
+    <div class="row ngrx">
+      <div class="col">
+        <h3>Reducer</h3>
+
+        <code>
+          <pre>
+
+    initialState = 20;
+
+    createReducer(
+      initialState,
+      on(increment, (state) => state + 1),
+      on(decrement, (state) => state - 1),
+      on(multiplicar, (state, &#123; numero &#125;) => state * numero),
+      on(dividir, (state, &#123; numero &#125;) => state / numero),
+      on(reset, (state) => (state = initialState))
+    );
+  </pre
+          >
+        </code>
+      </div>
+
+      <div class="col">
+        <h3>Actions</h3>
+
+        <code>
+          <pre>
+      increment = createAction('[Contador] Increment');
+      decrement = createAction('[Contador] Decrement');
+      multiplicar = createAction('[Contador] Multiplicar', props<&#123; numero: number &#125;>());
+      dividir = createAction('[Contador] Dividir', props<&#123; numero: number &#125;>());
+      reset = createAction('[Contador] Reset');
+    </pre
+          >
+        </code>
+      </div>
+    </div>
+  </div>
+</div>

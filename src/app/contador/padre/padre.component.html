@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col">
       <h1>Padre</h1>
-      <code> public contador = {{ contador }}; </code>
+
+      <code>
+        public contador = <span class="contador">{{ contador }}</span
+        >;
+      </code>
     </div>
   </div>
 
@@ -11,10 +15,17 @@
       <button (click)="incrementar()" class="btn">+ Increment</button>
       <button (click)="decrementar()" class="btn">- Decrement</button>
     </div>
+
+    <code> this.contador += 1; </code>
+    <code> this.contador -= 1; </code>
   </div>
 
   <div class="row contenedor hijo">
     <div class="col">
+      <code class="selector">
+        &#60;app-hijo (contadorPadre)="contador = $event"
+        [contadorHijo]="contador" &#62; &#60;/app-hijo&#62;
+      </code>
       <app-hijo
         (contadorPadre)="contador = $event"
         [contadorHijo]="contador"

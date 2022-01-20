@@ -24,38 +24,36 @@ Conceptos y ejemplos sobre el manejo Action, Reducer, State, Store
 
 ### Action
 
-Única fuente de información que se envia por interacción del usuario o programa
-
-Tiene dos propiedades
-
-1. Type (Obligatorio)\*
-2. Payload (Opcional) : Es la menor cantidad de información para realizar dicha acción
-
 ```typescript
-export interface Action {
-  type: string;
-  payload?: any;
-}
+export const increment = createAction("[Contador] Increment");
+export const decrement = createAction("[Contador] Decrement");
+export const multiplicar = createAction(
+  "[Contador] Multiplicar",
+  props<{ numero: number }>()
+);
+export const dividir = createAction(
+  "[Contador] Dividir",
+  props<{ numero: number }>()
+);
+export const reset = createAction("[Contador] Reset");
 ```
 
 ---
 
 ### Reducer
 
-En esencia es un contenedor de acciones que retorna un nuevo estado
-
-- Función que recibe unicamente dos argumentos.
-- Siempre retorna un estado
-- Es una función pura - No genera efectos fuera de su scope
-
-Argumentos que recibe la función
-
-1. State ( oldState )
-2. Action
-
 ```typescript
-export interface Reducer<T> {
-  (state: T, action: Action): T;
+const _counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => state + 1),
+  on(decrement, (state) => state - 1),
+  on(multiplicar, (state, { numero }) => state * numero),
+  on(dividir, (state, { numero }) => state / numero),
+  on(reset, (state) => (state = initialState))
+);
+
+export function counterReducer(state: any, action: Action) {
+  return _counterReducer(state, action);
 }
 ```
 
@@ -63,14 +61,9 @@ export interface Reducer<T> {
 
 ### State
 
-Reglas del state:
-
-- Solo lectura
-- Nunca se muta de forma directa
-- Se prohibe la utilización de funciones que muten los objetos/arreglos como por ejemplo : push ya que los objetos y arreglos son pasados por referencia
-- No se manipulan de forma directa
-
----
+```typescript
+const initialState = 20;
+```
 
 ### Store
 
@@ -81,16 +74,30 @@ Responsabilidades del Store:
 - Permite la notificación de cambiaos mediante la subscripción.
 
 ```typescript
-const store: Store = createStore(contadorReducer);
+// app.module
+StoreModule.forRoot({ contador: counterReducer }),
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
 
-// Implement Reducer
+// custom feature...
 
-store.dispatch(incrementadorAction);
-store.dispatch(incrementadorAction);
+  constructor(private store: Store<AppState>) {}
+
+  ngOnInit(): void {
+    this.store.select('contador').subscribe((state) => (this.contador = state));
+  }
+
+  incrementar() {
+    this.store.dispatch(actions.increment());
+  }
+  decrementar() {
+    this.store.dispatch(actions.decrement());
+  }
+
+
 ```
 
 ---
+
+### Demo
+
+![NgRx Demo](src/assets/ngrx.png)

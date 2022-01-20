@@ -1,1 +1,30 @@
-<p>hijo-ngrx works!</p>
+<div class="row">
+  <div class="col">
+    <h3>HijoNgRx</h3>
+    <code>
+      contadorHijo = <span class="contador">{{ contadorHijo }};</span>
+    </code>
+
+    <code>
+      this.store .select('contador') .subscribe((state) => (this.contadorHijo =
+      state));
+    </code>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <button (click)="multiplicar()" class="btn">* Multiplicar</button>
+    <button (click)="dividir()" class="btn">/ Dividir</button>
+  </div>
+
+  <code> this.store.dispatch(actions.multiplicar... </code>
+
+  <code> this.store.dispatch(actions.dividir... </code>
+</div>
+
+<div class="row contenedor nieto">
+  <div class="col">
+    <app-nieto-ngrx></app-nieto-ngrx>
+  </div>
+</div>

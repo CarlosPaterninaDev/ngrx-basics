@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col">
     <h3>Hijo</h3>
-    <code> @Input() contadorHijo = {{ contadorHijo }}; </code>
+    <code>
+      @Input() contadorHijo = <span class="contador">{{ contadorHijo }}</span
+      >;
+    </code>
 
     <code> @Output() contadorPadre = new EventEmitter(); </code>
   </div>
@@ -12,10 +15,24 @@
     <button (click)="multiplicar()" class="btn">* Multiplicar</button>
     <button (click)="dividir()" class="btn">/ Dividir</button>
   </div>
+
+  <code>
+    this.contadorHijo *= 2; this.contadorPadre.emit(this.contadorHijo);
+  </code>
+
+  <code>
+    this.contadorHijo /= 2; this.contadorPadre.emit(this.contadorHijo);
+  </code>
+  <code> resetContador(ev: any) => this.contadorPadre.emit(ev); </code>
 </div>
 
 <div class="row contenedor nieto">
   <div class="col">
+    <code class="selector">
+      &#60;app-nieto (resetContador)="resetContador($event)"
+      [contadorNieto]="contadorHijo" &#62; &#60;/app-nieto&#62;
+    </code>
+
     <app-nieto
       (resetContador)="resetContador($event)"
       [contadorNieto]="contadorHijo"

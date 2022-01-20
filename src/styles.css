@@ -3,6 +3,17 @@ html {
   height: 100vh;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   position: relative;
   background: url("https://ngrx.io/assets/images/header.svg");
@@ -35,4 +46,54 @@ body {
 
 code {
   display: block;
+  color: #412846;
+}
+
+.contador {
+  font-size: 26px;
+  color: white;
+}
+
+.btn {
+  border: 1px white solid;
+  margin: 10px;
+}
+
+.selector {
+  font-weight: 900;
+  color: white;
+}
+
+.ngrx {
+  background: #41284667;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.ngrx > code {
+  color: white;
+  font-size: 10px;
+}
+
+.ngrx > h3 {
+  color: white;
+}
+
+.carlycode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.carlycode img {
+  width: 20px;
+  opacity: 0.5;
+}
+
+.carlycode a {
+  color: black;
 }

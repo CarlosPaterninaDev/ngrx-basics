@@ -1,1 +1,21 @@
-<p>nieto-ngrx works!</p>
+<div class="row">
+  <div class="col">
+    <h4>Nieto NgRx</h4>
+    <code>
+      contadorNieto =
+      <span class="contador">{{ contadorNieto }};</span>
+    </code>
+    <code>
+      this.store .select('contador') .subscribe((state) => (this.contadorNieto =
+      state));
+    </code>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <button (click)="reset()" class="btn">0 Reset</button>
+  </div>
+
+  <code> this.store.dispatch(actions.reset... </code>
+</div>
