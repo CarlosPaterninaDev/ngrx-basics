@@ -100,4 +100,4 @@ StoreModule.forRoot({ contador: counterReducer }),
 
 ### Demo
 
-![NgRx Demo](src/assets/ngrx.png)
+[![NgRx Demo](src/assets/ngrx.png)](https://ngrx-basics.vercel.app/input-output)
